@@ -1,0 +1,15 @@
+<%@val s: skinny.Skinny %>
+<%@val lstResult: List[model.SyukujitsuBody] %>
+<h3>Hello World!</h3>
+<hr/>
+<p>
+Your first Skinny app works!
+</p>
+#for (notice <- s.flash.msg)
+    <p class="alert alert-info">${notice}</p>
+#end
+#if (lstResult.size > 0)
+    #for (i <- lstResult)
+        <li>${i.date_name}(${i.date.toString("yyyy/MM/dd")}})</li>
+    #end
+#end
