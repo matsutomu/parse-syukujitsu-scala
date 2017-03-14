@@ -34,55 +34,55 @@ class SykujitsuParserSpec extends FunSpec with Matchers {
     """.stripMargin
 
   val resRight = List(
-                      SyukujitsuBody("元日",new DateTime(2016,1,1,0,0,0)),
-                      SyukujitsuBody("成人の日", new DateTime(2016,1,11,0,0,0)),
-                      SyukujitsuBody("建国記念の日", new DateTime(2016,2,11,0,0,0)),
-                      SyukujitsuBody("春分の日",new DateTime(2016,3,20,0,0,0)),
-                      SyukujitsuBody("昭和の日",new DateTime(2016,4,29,0,0,0)),
-                      SyukujitsuBody("憲法記念日",new DateTime(2016,5,3,0,0,0)),
-                      SyukujitsuBody("みどりの日",new DateTime(2016,5,4,0,0,0)),
-                      SyukujitsuBody("こどもの日",new DateTime(2016,5,5,0,0,0)),
-                      SyukujitsuBody("海の日",new DateTime(2016,7,18,0,0,0)),
-                      SyukujitsuBody("山の日",new DateTime(2016,8,11,0,0,0)),
-                      SyukujitsuBody("敬老の日",new DateTime(2016,9,19,0,0,0)),
-                      SyukujitsuBody("秋分の日",new DateTime(2016,9,22,0,0,0)),
-                      SyukujitsuBody("体育の日",new DateTime(2016,10,10,0,0,0)),
-                      SyukujitsuBody("文化の日",new DateTime(2016,11,3,0,0,0)),
-                      SyukujitsuBody("勤労感謝の日",new DateTime(2016,11,23,0,0,0)),
-                      SyukujitsuBody("天皇誕生日",new DateTime(2016,12,23,0,0,0)),
-                      SyukujitsuBody("元日",new DateTime(2017,1,1,0,0,0)),
-                      SyukujitsuBody("成人の日",new DateTime(2017,1,9,0,0,0)),
-                      SyukujitsuBody("建国記念の日",new DateTime(2017,2,11,0,0,0)),
-                      SyukujitsuBody("春分の日",new DateTime(2017,3,20,0,0,0)),
-                      SyukujitsuBody("昭和の日",new DateTime(2017,4,29,0,0,0)),
-                      SyukujitsuBody("憲法記念日",new DateTime(2017,5,3,0,0,0)),
-                      SyukujitsuBody("みどりの日",new DateTime(2017,5,4,0,0,0)),
-                      SyukujitsuBody("こどもの日",new DateTime(2017,5,5,0,0,0)),
-                      SyukujitsuBody("海の日",new DateTime(2017,7,17,0,0,0)),
-                      SyukujitsuBody("山の日",new DateTime(2017,8,11,0,0,0)),
-                      SyukujitsuBody("敬老の日",new DateTime(2017,9,18,0,0,0)),
-                      SyukujitsuBody("秋分の日",new DateTime(2017,9,23,0,0,0)),
-                      SyukujitsuBody("体育の日",new DateTime(2017,10,9,0,0,0)),
-                      SyukujitsuBody("文化の日",new DateTime(2017,11,3,0,0,0)),
-                      SyukujitsuBody("勤労感謝の日",new DateTime(2017,11,23,0,0,0)),
-                      SyukujitsuBody("天皇誕生日",new DateTime(2017,12,23,0,0,0)),
-                      SyukujitsuBody("元日",new DateTime(2018,1,1,0,0,0)),
-                      SyukujitsuBody("成人の日",new DateTime(2018,1,8,0,0,0)),
-                      SyukujitsuBody("建国記念の日",new DateTime(2018,2,11,0,0,0)),
-                      SyukujitsuBody("春分の日",new DateTime(2018,3,21,0,0,0)),
-                      SyukujitsuBody("昭和の日",new DateTime(2018,4,29,0,0,0)),
-                      SyukujitsuBody("憲法記念日",new DateTime(2018,5,3,0,0,0)),
-                      SyukujitsuBody("みどりの日",new DateTime(2018,5,4,0,0,0)),
-                      SyukujitsuBody("こどもの日",new DateTime(2018,5,5,0,0,0)),
-                      SyukujitsuBody("海の日",new DateTime(2018,7,16,0,0,0)),
-                      SyukujitsuBody("山の日",new DateTime(2018,8,11,0,0,0)),
-                      SyukujitsuBody("敬老の日",new DateTime(2018,9,17,0,0,0)),
-                      SyukujitsuBody("秋分の日",new DateTime(2018,9,23,0,0,0)),
-                      SyukujitsuBody("体育の日",new DateTime(2018,10,8,0,0,0)),
-                      SyukujitsuBody("文化の日",new DateTime(2018,11,3,0,0,0)),
-                      SyukujitsuBody("勤労感謝の日",new DateTime(2018,11,23,0,0,0)),
-                      SyukujitsuBody("天皇誕生日",new DateTime(2018,12,23,0,0,0))
-                  )
+    SyukujitsuBody("元日", new DateTime(2016, 1, 1, 0, 0, 0)),
+    SyukujitsuBody("成人の日", new DateTime(2016, 1, 11, 0, 0, 0)),
+    SyukujitsuBody("建国記念の日", new DateTime(2016, 2, 11, 0, 0, 0)),
+    SyukujitsuBody("春分の日", new DateTime(2016, 3, 20, 0, 0, 0)),
+    SyukujitsuBody("昭和の日", new DateTime(2016, 4, 29, 0, 0, 0)),
+    SyukujitsuBody("憲法記念日", new DateTime(2016, 5, 3, 0, 0, 0)),
+    SyukujitsuBody("みどりの日", new DateTime(2016, 5, 4, 0, 0, 0)),
+    SyukujitsuBody("こどもの日", new DateTime(2016, 5, 5, 0, 0, 0)),
+    SyukujitsuBody("海の日", new DateTime(2016, 7, 18, 0, 0, 0)),
+    SyukujitsuBody("山の日", new DateTime(2016, 8, 11, 0, 0, 0)),
+    SyukujitsuBody("敬老の日", new DateTime(2016, 9, 19, 0, 0, 0)),
+    SyukujitsuBody("秋分の日", new DateTime(2016, 9, 22, 0, 0, 0)),
+    SyukujitsuBody("体育の日", new DateTime(2016, 10, 10, 0, 0, 0)),
+    SyukujitsuBody("文化の日", new DateTime(2016, 11, 3, 0, 0, 0)),
+    SyukujitsuBody("勤労感謝の日", new DateTime(2016, 11, 23, 0, 0, 0)),
+    SyukujitsuBody("天皇誕生日", new DateTime(2016, 12, 23, 0, 0, 0)),
+    SyukujitsuBody("元日", new DateTime(2017, 1, 1, 0, 0, 0)),
+    SyukujitsuBody("成人の日", new DateTime(2017, 1, 9, 0, 0, 0)),
+    SyukujitsuBody("建国記念の日", new DateTime(2017, 2, 11, 0, 0, 0)),
+    SyukujitsuBody("春分の日", new DateTime(2017, 3, 20, 0, 0, 0)),
+    SyukujitsuBody("昭和の日", new DateTime(2017, 4, 29, 0, 0, 0)),
+    SyukujitsuBody("憲法記念日", new DateTime(2017, 5, 3, 0, 0, 0)),
+    SyukujitsuBody("みどりの日", new DateTime(2017, 5, 4, 0, 0, 0)),
+    SyukujitsuBody("こどもの日", new DateTime(2017, 5, 5, 0, 0, 0)),
+    SyukujitsuBody("海の日", new DateTime(2017, 7, 17, 0, 0, 0)),
+    SyukujitsuBody("山の日", new DateTime(2017, 8, 11, 0, 0, 0)),
+    SyukujitsuBody("敬老の日", new DateTime(2017, 9, 18, 0, 0, 0)),
+    SyukujitsuBody("秋分の日", new DateTime(2017, 9, 23, 0, 0, 0)),
+    SyukujitsuBody("体育の日", new DateTime(2017, 10, 9, 0, 0, 0)),
+    SyukujitsuBody("文化の日", new DateTime(2017, 11, 3, 0, 0, 0)),
+    SyukujitsuBody("勤労感謝の日", new DateTime(2017, 11, 23, 0, 0, 0)),
+    SyukujitsuBody("天皇誕生日", new DateTime(2017, 12, 23, 0, 0, 0)),
+    SyukujitsuBody("元日", new DateTime(2018, 1, 1, 0, 0, 0)),
+    SyukujitsuBody("成人の日", new DateTime(2018, 1, 8, 0, 0, 0)),
+    SyukujitsuBody("建国記念の日", new DateTime(2018, 2, 11, 0, 0, 0)),
+    SyukujitsuBody("春分の日", new DateTime(2018, 3, 21, 0, 0, 0)),
+    SyukujitsuBody("昭和の日", new DateTime(2018, 4, 29, 0, 0, 0)),
+    SyukujitsuBody("憲法記念日", new DateTime(2018, 5, 3, 0, 0, 0)),
+    SyukujitsuBody("みどりの日", new DateTime(2018, 5, 4, 0, 0, 0)),
+    SyukujitsuBody("こどもの日", new DateTime(2018, 5, 5, 0, 0, 0)),
+    SyukujitsuBody("海の日", new DateTime(2018, 7, 16, 0, 0, 0)),
+    SyukujitsuBody("山の日", new DateTime(2018, 8, 11, 0, 0, 0)),
+    SyukujitsuBody("敬老の日", new DateTime(2018, 9, 17, 0, 0, 0)),
+    SyukujitsuBody("秋分の日", new DateTime(2018, 9, 23, 0, 0, 0)),
+    SyukujitsuBody("体育の日", new DateTime(2018, 10, 8, 0, 0, 0)),
+    SyukujitsuBody("文化の日", new DateTime(2018, 11, 3, 0, 0, 0)),
+    SyukujitsuBody("勤労感謝の日", new DateTime(2018, 11, 23, 0, 0, 0)),
+    SyukujitsuBody("天皇誕生日", new DateTime(2018, 12, 23, 0, 0, 0))
+  )
 
   var testNG1 =
     """
@@ -110,7 +110,7 @@ class SykujitsuParserSpec extends FunSpec with Matchers {
 
       val res = resultParse match {
         case Right(result) => result
-        case Left(msg)     => None
+        case Left(msg) => None
       }
 
       res should equal(resRight)
@@ -121,7 +121,7 @@ class SykujitsuParserSpec extends FunSpec with Matchers {
 
       val res = resultParse match {
         case Right(result) => result
-        case Left(msg)     => msg
+        case Left(msg) => msg
       }
 
       res should equal("string matching regex `.*,' expected but `9' found")
@@ -129,12 +129,12 @@ class SykujitsuParserSpec extends FunSpec with Matchers {
 
     it("parse Exception") {
 
-      a [org.joda.time.IllegalFieldValueException] should be thrownBy{
+      a[org.joda.time.IllegalFieldValueException] should be thrownBy {
 
         val resultParse = SyukujitsuParser.parse(testNG2)
         val res = resultParse match {
           case Right(result) => result
-          case Left(msg)     => msg
+          case Left(msg) => msg
         }
       }
 
