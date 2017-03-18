@@ -1,10 +1,8 @@
 <%@val s: skinny.Skinny %>
 <%@val lstResult: List[model.SyukujitsuBody] %>
-<h3>Hello World!</h3>
+<h3>祝日リスト</h3>
 <hr/>
-<p>
-Your first Skinny app works!
-</p>
+<p></p>
 #for (notice <- s.flash.msg)
     <p class="alert alert-info">${notice}</p>
 #end

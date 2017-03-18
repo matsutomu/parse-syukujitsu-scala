@@ -8,7 +8,7 @@ import model._
  */
 object SyukujitsuParserCLI extends App {
 
-  var testOK =
+  var syukujitsuCsvOk =
     """
       |平成28年（2016年）,,平成29年（2017年）,,平成30年（2018年）,
       |名称,月日,名称,月日,名称,月日
@@ -32,7 +32,7 @@ object SyukujitsuParserCLI extends App {
       |月日は表示するアプリケーションによって形式が異なる場合があります。,,,,,
     """.stripMargin
 
-  var testNG =
+  var syukujitsuCsvNG =
     """
     |平成28年（2016年）,,平成29年（2017年）,,平成30年（2018年）,
     |名称,月日,名称,月日,名称,月日
@@ -40,10 +40,11 @@ object SyukujitsuParserCLI extends App {
     |成人の日,2016/1/11,成人の日,2017/1/9,成人の日,2018/1/8
     """.stripMargin
 
-  val test = SyukujitsuParser.parse(testOK)
-  test match {
+  val result = SyukujitsuParser.parse(syukujitsuCsvOk)
+  result match {
     case Right(ret: List[SyukujitsuBody]) => {
       ret.foreach(x => println(x.date_name + ":" + x.date))
+      println(SyukujitsuParser.convertMapYear(ret))
     }
     case Left(msg: String) => {
       println(msg)
