@@ -4,6 +4,9 @@ import model.SyukujitsuBody
 import org.scalatest._
 import org.joda.time.DateTime
 
+import scala.collection.SortedMap
+import Joda._
+
 /**
  *
  */
@@ -104,6 +107,67 @@ class SykujitsuParserSpec extends FunSpec with Matchers {
       |月日は表示するアプリケーションによって形式が異なる場合があります。,,,,,
     """.stripMargin
 
+
+  val resMap = SortedMap(
+    2016 ->
+      SortedMap(
+        new DateTime(2016,1,1, 0, 0, 0) -> "元日",
+        new DateTime(2016,1,11, 0, 0, 0) -> "成人の日",
+        new DateTime(2016,2,11, 0, 0, 0) -> "建国記念の日",
+        new DateTime(2016,3,20, 0, 0, 0) -> "春分の日",
+        new DateTime(2016,4,29, 0, 0, 0) -> "昭和の日",
+        new DateTime(2016,5,3, 0, 0, 0) -> "憲法記念日",
+        new DateTime(2016,5,4, 0, 0, 0) -> "みどりの日",
+        new DateTime(2016,5,5, 0, 0, 0) -> "こどもの日",
+        new DateTime(2016,7,18, 0, 0, 0) -> "海の日",
+        new DateTime(2016,8,11, 0, 0, 0) -> "山の日",
+        new DateTime(2016,9,19, 0, 0, 0) -> "敬老の日",
+        new DateTime(2016,9,22, 0, 0, 0) -> "秋分の日",
+        new DateTime(2016,10,10, 0, 0, 0) -> "体育の日",
+        new DateTime(2016,11,3, 0, 0, 0) -> "文化の日",
+        new DateTime(2016,11,23, 0, 0, 0) -> "勤労感謝の日",
+        new DateTime(2016,12,23, 0, 0, 0) -> "天皇誕生日"
+      ),
+  2017 ->
+    SortedMap(
+      new DateTime(2017,1,1, 0, 0, 0) -> "元日",
+      new DateTime(2017,1,9, 0, 0, 0) -> "成人の日",
+      new DateTime(2017,2,11, 0, 0, 0) -> "建国記念の日",
+      new DateTime(2017,3,20, 0, 0, 0) -> "春分の日",
+      new DateTime(2017,4,29, 0, 0, 0) -> "昭和の日",
+      new DateTime(2017,5,3, 0, 0, 0) -> "憲法記念日",
+      new DateTime(2017,5,4, 0, 0, 0) -> "みどりの日",
+      new DateTime(2017,5,5, 0, 0, 0) -> "こどもの日",
+      new DateTime(2017,7,17, 0, 0, 0) -> "海の日",
+      new DateTime(2017,8,11, 0, 0, 0) -> "山の日",
+      new DateTime(2017,9,18, 0, 0, 0) -> "敬老の日",
+      new DateTime(2017,9,23, 0, 0, 0) -> "秋分の日",
+      new DateTime(2017,10,9, 0, 0, 0) -> "体育の日",
+      new DateTime(2017,11,3, 0, 0, 0) -> "文化の日",
+      new DateTime(2017,11,23, 0, 0, 0) -> "勤労感謝の日",
+      new DateTime(2017,12,23, 0, 0, 0) -> "天皇誕生日"
+    ),
+  2018 ->
+    SortedMap(
+      new DateTime(2018,1,1, 0, 0, 0) -> "元日",
+      new DateTime(2018,1,8, 0, 0, 0) -> "成人の日",
+      new DateTime(2018,2,11, 0, 0, 0) -> "建国記念の日",
+      new DateTime(2018,3,21, 0, 0, 0) -> "春分の日",
+      new DateTime(2018,4,29, 0, 0, 0) -> "昭和の日",
+      new DateTime(2018,5,3, 0, 0, 0) -> "憲法記念日",
+      new DateTime(2018,5,4, 0, 0, 0) -> "みどりの日",
+      new DateTime(2018,5,5, 0, 0, 0) -> "こどもの日",
+      new DateTime(2018,7,16, 0, 0, 0) -> "海の日",
+      new DateTime(2018,8,11, 0, 0, 0) -> "山の日",
+      new DateTime(2018,9,17, 0, 0, 0) -> "敬老の日",
+      new DateTime(2018,9,23, 0, 0, 0) -> "秋分の日",
+      new DateTime(2018,10,8, 0, 0, 0) -> "体育の日",
+      new DateTime(2018,11,3, 0, 0, 0) -> "文化の日",
+      new DateTime(2018,11,23, 0, 0, 0) -> "勤労感謝の日",
+      new DateTime(2018,12,23, 0, 0, 0) -> "天皇誕生日"
+    )
+  )
+
   describe("SykujitsuParserSpec") {
     it("parse Right") {
       val resultParse = SyukujitsuParser.parse(testOK)
@@ -139,6 +203,34 @@ class SykujitsuParserSpec extends FunSpec with Matchers {
       }
 
     }
+
+    it("convert to Map  by for ") {
+      val resultParse = SyukujitsuParser.parse(testOK)
+      val res = resultParse match {
+        case Right(result) =>  SyukujitsuParser.convertYearMonthMap_for(result)
+        case Left(msg) => None
+      }
+      res should equal(resMap)
+    }
+
+    it("convert to Map  by foldLeft ") {
+      val resultParse = SyukujitsuParser.parse(testOK)
+      val res = resultParse match {
+        case Right(result) =>  SyukujitsuParser.convertYearMonthMap_foldLeft(result)
+        case Left(msg) => None
+      }
+      res should equal(resMap)
+    }
+
+    it("convert to Map  by Reculsive ") {
+      val resultParse = SyukujitsuParser.parse(testOK)
+      val res = resultParse match {
+        case Right(result) =>  SyukujitsuParser.convertYearMapList_reculsive(result)
+        case Left(msg) => None
+      }
+      res should equal(resMap)
+    }
+
 
   }
 

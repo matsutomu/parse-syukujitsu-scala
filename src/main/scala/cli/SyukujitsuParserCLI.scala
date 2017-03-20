@@ -44,7 +44,9 @@ object SyukujitsuParserCLI extends App {
   result match {
     case Right(ret: List[SyukujitsuBody]) => {
       ret.foreach(x => println(x.date_name + ":" + x.date))
-      println(SyukujitsuParser.convertMapYear(ret))
+      // println(SyukujitsuParser.convertYearMapList(ret))
+      // println(SyukujitsuParser.convertYearMonthMap_for(ret))
+      println(SyukujitsuParser.convertYearMonthMap_foldLeft(ret))
     }
     case Left(msg: String) => {
       println(msg)
