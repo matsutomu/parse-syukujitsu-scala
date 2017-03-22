@@ -57,17 +57,18 @@ object SyukujitsuParser extends RegexParsers {
 
   /***********************************************************************
    *
-    *  List[SyukujitsuBody] to Map[Int, Map[DateTime, String]
-    *   ex.
-    *    for
-    *    map
-    *    reculsive
-    *
-    *
-    *  List[SyukujitsuBody] to Map[Int, List[SyukujitsuBody]]
-    *
-    *
-    *
+   *  List[SyukujitsuBody] to Map[Int, Map[DateTime, String]
+   *   ex.
+   *    ・for
+   *    ・foldLeft
+   *    ・reculsive
+   *
+   *
+   *  List[SyukujitsuBody] to Map[Int, List[SyukujitsuBody]]
+   *   ex.
+   *    ・reculsive
+   *
+   *
    */
 
 
@@ -113,22 +114,21 @@ object SyukujitsuParser extends RegexParsers {
   }
 
 
-  def convertYearMapList_reculsive(lst: List[SyukujitsuBody],
-                         mp: SortedMap[Int, SortedMap[DateTime, String]] = SortedMap.empty[Int, SortedMap[DateTime, String]]):SortedMap[Int, SortedMap[DateTime, String]] = {
-    lst match {
+  def convertYearMonthMap_reculsive(lst: List[SyukujitsuBody],
+                                    mp: SortedMap[Int, SortedMap[DateTime, String]] = SortedMap.empty[Int, SortedMap[DateTime, String]]
+                                  ):SortedMap[Int, SortedMap[DateTime, String]] = lst match {
       case Nil => mp
       case head :: tail => {
         if (mp isDefinedAt (head.date.getYear)) {
-          convertYearMapList_reculsive(tail, mp.updated(head.date.getYear, mp.apply(head.date.getYear) + (head.date -> head.date_name)))
+          convertYearMonthMap_reculsive(tail, mp.updated(head.date.getYear, mp.apply(head.date.getYear) + (head.date -> head.date_name)))
         } else
-          convertYearMapList_reculsive(tail, mp + (head.date.getYear -> SortedMap(head.date -> head.date_name)))
+          convertYearMonthMap_reculsive(tail, mp + (head.date.getYear -> SortedMap(head.date -> head.date_name)))
       }
-    }
   }
 
   def convertYearMapList(lst: List[SyukujitsuBody],
-                         mp: Map[Int, List[SyukujitsuBody]] = Map.empty[Int, List[SyukujitsuBody]]):Map[Int, List[SyukujitsuBody]] = {
-    lst match {
+                         mp: Map[Int, List[SyukujitsuBody]] = Map.empty[Int, List[SyukujitsuBody]]
+                        ):Map[Int, List[SyukujitsuBody]] = lst match {
       case Nil => mp
       case head :: tail => {
         if (mp isDefinedAt (head.date.getYear)) {
@@ -136,7 +136,6 @@ object SyukujitsuParser extends RegexParsers {
         } else
           convertYearMapList(tail, mp + (head.date.getYear -> List(head)))
       }
-    }
   }
 
 }

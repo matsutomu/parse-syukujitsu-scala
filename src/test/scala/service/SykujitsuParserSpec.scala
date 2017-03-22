@@ -225,7 +225,7 @@ class SykujitsuParserSpec extends FunSpec with Matchers {
     it("convert to Map  by Reculsive ") {
       val resultParse = SyukujitsuParser.parse(testOK)
       val res = resultParse match {
-        case Right(result) =>  SyukujitsuParser.convertYearMapList_reculsive(result)
+        case Right(result) =>  SyukujitsuParser.convertYearMonthMap_reculsive(result)
         case Left(msg) => None
       }
       res should equal(resMap)
