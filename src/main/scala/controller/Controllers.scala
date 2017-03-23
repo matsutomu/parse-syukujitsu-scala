@@ -12,6 +12,7 @@ object Controllers {
 
   object root extends RootController with Routes {
     val indexUrl = get("/?")(index).as('index)
+    val syukujitsuUrl = get("/syukujitsu.json/:y")(syukujitsu).as('syukujitsu)
   }
 
 }

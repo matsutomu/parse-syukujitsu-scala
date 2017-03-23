@@ -1,5 +1,5 @@
 package model
 
-import org.joda.time.DateTime
+import java.time.LocalDate
 
-case class SyukujitsuBody(date_name: String, date: DateTime)
+case class SyukujitsuBody(date_name: String, date: LocalDate)

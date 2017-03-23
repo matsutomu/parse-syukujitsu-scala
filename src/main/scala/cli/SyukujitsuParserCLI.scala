@@ -1,5 +1,8 @@
 package cli
 
+import java.time.{ LocalDate, LocalDateTime }
+import java.time.format.DateTimeFormatter
+
 import service.SyukujitsuParser
 import model._
 
@@ -8,6 +11,8 @@ import model._
  */
 object SyukujitsuParserCLI extends App {
 
+  println(LocalDate.parse("2016/1/1", DateTimeFormatter.ofPattern("yyyy/M/d")))
+
   var syukujitsuCsvOk =
     """
       |平成28年（2016年）,,平成29年（2017年）,,平成30年（2018年）,
@@ -15,6 +20,8 @@ object SyukujitsuParserCLI extends App {
       |元日,2016/1/1,元日,2017/1/1,元日,2018/1/1
       |成人の日,2016/1/11,成人の日,2017/1/9,成人の日,2018/1/8
       |建国記念の日,2016/2/11,建国記念の日,2017/2/11,建国記念の日,2018/2/11
+      |春分の日,2016/3/20,春分の日,2017/3/20,春分の日,2018/3/21
+      |春分の日,2016/3/20,春分の日,2017/3/20,春分の日,2018/3/21
       |春分の日,2016/3/20,春分の日,2017/3/20,春分の日,2018/3/21
       |昭和の日,2016/4/29,昭和の日,2017/4/29,昭和の日,2018/4/29
       |憲法記念日,2016/5/3,憲法記念日,2017/5/3,憲法記念日,2018/5/3

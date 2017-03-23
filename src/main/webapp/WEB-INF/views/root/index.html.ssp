@@ -8,6 +8,6 @@
 #end
 #if (lstResult.size > 0)
     #for (i <- lstResult)
-        <li>${i.date_name}(${i.date.toString("yyyy/MM/dd")})</li>
+        <li>${i.date_name}(${i.date.formatted("yyyy/MM/dd")})</li>
     #end
 #end
