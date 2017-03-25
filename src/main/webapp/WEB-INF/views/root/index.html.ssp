@@ -1,13 +1,99 @@
 <%@val s: skinny.Skinny %>
 <%@val lstResult: List[model.SyukujitsuBody] %>
-<h3>祝日リスト</h3>
-<hr/>
-<p></p>
-#for (notice <- s.flash.msg)
-    <p class="alert alert-info">${notice}</p>
-#end
-#if (lstResult.size > 0)
-    #for (i <- lstResult)
-        <li>${i.date_name}(${i.date.formatted("yyyy/MM/dd")})</li>
+<div class="col-8">
+
+    <div id="app-simple">
+        <h3>祝日リスト</h3>
+        <a v-for="y in years" href="#" v-on:click="onFunc(y.year, $event)">
+            <!-- <div v-bind:class="['btn_default', y.isActive ? 'btn_active': '']"> {{ y.year }} </div> -->
+            <div v-if="y.year == select_year"><div class="btn_default btn_active"> {{ y.year }} </div></div>
+            <div v-else><div class="btn_default"> {{ y.year }} </div></div>
+        </a>
+        <div class="clearfix"></div><br />
+        <div v-for="m in err_msg"  class="alert alert-danger" role="alert">{{ m }}</div>
+        <hr/>
+        <ol>
+            <li v-for="s in syukujitsu" v-if="s.date.slice(0,4) == select_year">
+                <div > {{ s.name }}:{{ s.date }} </div>
+            </li>
+        </ol>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    /*
+     * Page Top Year List
+     */
+    function SelYear(_year, _isActive) {
+        this.year     = _year;
+        this.isActive = _isActive;
+    };
+
+    var years_list = [
+        new SelYear("2016",true ),
+        new SelYear("2017",false),
+        new SelYear("2018",false),
+    ];
+
+    /*
+     * Syukujitsu List From Server
+     */
+    function Syukujitsu(_name, _date) {
+        this.name = _name;
+        this.date = _date;
+    };
+
+    var syukujitsu_default = [
+    #if (lstResult.size > 0)
+        #for (i <- lstResult)
+            new Syukujitsu("${i.date_name}","${i.date.format(java.time.format.DateTimeFormatter.ofPattern("yyyy/MM/dd"))}"),
+        #end
     #end
-#end
+    ];
+
+    /*
+     * Error Messge From Server
+     */
+    var server_msg = [
+    #if (s.flash.msg.size > 0)
+        #for (notice <- s.flash.msg)
+            "${notice}",
+        #end
+    #end
+    ];
+
+    /*
+     * Vue.js
+     */
+    var app = new Vue({
+            el: '#app-simple',
+            data: {
+                years: years_list,
+                syukujitsu: syukujitsu_default,
+                select_year: "2016",
+                err_msg: server_msg
+                },
+            methods: {
+                    onFunc: function(y, e) {
+                        //console.log(app.default_year)
+                        app.select_year = y; // data binding
+
+                        // no good data bind
+                        for(var i = 0; i < years_list.length; i++){
+                            if(years_list[i].year == y){
+                                years_list[i].isActice = true;
+                                // console.log(years_list[i].year + ":" + years_list[i].isActice);
+                            }
+                            else
+                            {
+                                years_list[i].isActice = false;
+                                // console.log(years_list[i].year + ":" + years_list[i].isActice);
+                            }
+                        };
+                        app.years = years_list; // no good data bind
+                    }
+                }
+            });
+</script>
