@@ -11,8 +11,6 @@ import model._
  */
 object SyukujitsuParserCLI extends App {
 
-  println(LocalDate.parse("2016/1/1", DateTimeFormatter.ofPattern("yyyy/M/d")))
-
   var syukujitsuCsvOk =
     """
       |平成28年（2016年）,,平成29年（2017年）,,平成30年（2018年）,

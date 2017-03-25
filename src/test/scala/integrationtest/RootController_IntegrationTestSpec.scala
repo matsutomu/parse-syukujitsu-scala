@@ -10,6 +10,13 @@ class RootController_IntegrationTestSpec extends SkinnyFlatSpec with SkinnyTestS
     get("/") {
       status should equal(200)
     }
+
   }
 
+  it should "show json syukujitsu" in {
+    get("/syukujitsu.json/2016") {
+      status should equal(200)
+    }
+
+  }
 }
