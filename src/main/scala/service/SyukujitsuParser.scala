@@ -106,17 +106,20 @@ object SyukujitsuParser extends RegexParsers {
     }
   }
 
-  def convertYearMonthMap_reculsive(
-    lst: List[SyukujitsuBody],
-    mp: SortedMap[Int, SortedMap[LocalDate, String]] = SortedMap.empty[Int, SortedMap[LocalDate, String]]
+  def convertYearMonthMap_recursive(
+        lst: List[SyukujitsuBody],
+        mp: SortedMap[Int, SortedMap[LocalDate, String]] = SortedMap.empty[Int, SortedMap[LocalDate, String]]
   ): SortedMap[Int, SortedMap[LocalDate, String]] = lst match {
-    case Nil => mp
-    case head :: tail => {
-      if (mp isDefinedAt (head.date.getYear)) {
-        convertYearMonthMap_reculsive(tail, mp.updated(head.date.getYear, mp.apply(head.date.getYear) + (head.date -> head.date_name)))
-      } else
-        convertYearMonthMap_reculsive(tail, mp + (head.date.getYear -> SortedMap(head.date -> head.date_name)))
-    }
+        case Nil => mp
+        case head :: tail => {
+                if (mp isDefinedAt (head.date.getYear)) {
+                  convertYearMonthMap_recursive(tail,
+                          mp.updated(head.date.getYear,
+                                     mp.apply(head.date.getYear) + (head.date -> head.date_name)))
+                } else
+                  convertYearMonthMap_recursive(tail,
+                          mp + (head.date.getYear -> SortedMap(head.date -> head.date_name)))
+        }
   }
 
   def convertYearMapList(

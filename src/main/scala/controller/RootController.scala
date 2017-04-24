@@ -43,7 +43,7 @@ class RootController extends ApplicationController with JSONFeature {
     contentType = "application/json"
     getSyukujitsuList match {
       case Right(result) => {
-        SyukujitsuParser.convertYearMonthMap_reculsive(result).get(y) match {
+        SyukujitsuParser.convertYearMonthMap_recursive(result).get(y) match {
           case Some(v) => toJSONString(JSONResponse(true, "", Some(v)))
           case None => toJSONString(JSONResponse(false, "no data", None))
         }
