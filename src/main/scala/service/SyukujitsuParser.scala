@@ -65,7 +65,7 @@ object SyukujitsuParser extends RegexParsers {
    *
    */
 
-  def convertYearMonthMap_for(lst: List[SyukujitsuBody]): SortedMap[Int, SortedMap[LocalDate, String]] = {
+  def convertSyukujitsuMap_for(lst: List[SyukujitsuBody]): SortedMap[Int, SortedMap[LocalDate, String]] = {
     var ret = SortedMap.empty[Int, SortedMap[LocalDate, String]]
     var tmp = SortedMap.empty[LocalDate, String]
 
@@ -87,7 +87,7 @@ object SyukujitsuParser extends RegexParsers {
     ret
   }
 
-  def convertYearMonthMap_foldLeft(lst: List[SyukujitsuBody]): SortedMap[Int, SortedMap[LocalDate, String]] = {
+  def convertSyukujitsuMap_foldLeft(lst: List[SyukujitsuBody]): SortedMap[Int, SortedMap[LocalDate, String]] = {
     lst.foldLeft(SortedMap.empty[Int, SortedMap[LocalDate, String]]) { (r, itm) =>
       r.get(itm.date.getYear) match {
         case Some(smap_item) => {
@@ -106,18 +106,18 @@ object SyukujitsuParser extends RegexParsers {
     }
   }
 
-  def convertYearMonthMap_recursive(
+  def convertSyukujitsuMap_recursive(
         lst: List[SyukujitsuBody],
         mp: SortedMap[Int, SortedMap[LocalDate, String]] = SortedMap.empty[Int, SortedMap[LocalDate, String]]
   ): SortedMap[Int, SortedMap[LocalDate, String]] = lst match {
         case Nil => mp
         case head :: tail => {
                 if (mp isDefinedAt (head.date.getYear)) {
-                  convertYearMonthMap_recursive(tail,
+                  convertSyukujitsuMap_recursive(tail,
                           mp.updated(head.date.getYear,
                                      mp.apply(head.date.getYear) + (head.date -> head.date_name)))
                 } else
-                  convertYearMonthMap_recursive(tail,
+                  convertSyukujitsuMap_recursive(tail,
                           mp + (head.date.getYear -> SortedMap(head.date -> head.date_name)))
         }
   }

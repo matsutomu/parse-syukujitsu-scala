@@ -206,7 +206,7 @@ class SykujitsuParserSpec extends FunSpec with Matchers {
     it("convert to Map  by for ") {
       val resultParse = SyukujitsuParser.parse(testOK)
       val res = resultParse match {
-        case Right(result) => SyukujitsuParser.convertYearMonthMap_for(result)
+        case Right(result) => SyukujitsuParser.convertSyukujitsuMap_for(result)
         case Left(msg) => None
       }
       res should equal(resMap)
@@ -215,7 +215,7 @@ class SykujitsuParserSpec extends FunSpec with Matchers {
     it("convert to Map  by foldLeft ") {
       val resultParse = SyukujitsuParser.parse(testOK)
       val res = resultParse match {
-        case Right(result) => SyukujitsuParser.convertYearMonthMap_foldLeft(result)
+        case Right(result) => SyukujitsuParser.convertSyukujitsuMap_foldLeft(result)
         case Left(msg) => None
       }
       res should equal(resMap)
@@ -224,7 +224,7 @@ class SykujitsuParserSpec extends FunSpec with Matchers {
     it("convert to Map  by Recursive ") {
       val resultParse = SyukujitsuParser.parse(testOK)
       val res = resultParse match {
-        case Right(result) => SyukujitsuParser.convertYearMonthMap_recursive(result)
+        case Right(result) => SyukujitsuParser.convertSyukujitsuMap_recursive(result)
         case Left(msg) => None
       }
       res should equal(resMap)

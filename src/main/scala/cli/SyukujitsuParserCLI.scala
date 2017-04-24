@@ -51,7 +51,7 @@ object SyukujitsuParserCLI extends App {
       ret.foreach(x => println(x.date_name + ":" + x.date))
       // println(SyukujitsuParser.convertYearMapList(ret))
       // println(SyukujitsuParser.convertYearMonthMap_for(ret))
-      println(SyukujitsuParser.convertYearMonthMap_foldLeft(ret))
+      println(SyukujitsuParser.convertSyukujitsuMap_foldLeft(ret))
     }
     case Left(msg: String) => {
       println(msg)
