@@ -122,6 +122,13 @@ object SyukujitsuParser extends RegexParsers {
         }
   }
 
+
+  def convertSyukujitsuMap_builtin(lst: List[SyukujitsuBody]) =
+    lst.groupBy(_.date.getYear).map { e =>
+        (e._1 -> e._2.foldLeft(Map[LocalDate, String]())((b, s) => (b ++ Map(s.date -> s.date_name))))
+    }
+
+
   def convertYearMapList(
     lst: List[SyukujitsuBody],
     mp: Map[Int, List[SyukujitsuBody]] = Map.empty[Int, List[SyukujitsuBody]]

@@ -1,11 +1,14 @@
 package service
 
 import java.time.LocalDate
+
 import org.scalatest._
 
 import scala.collection.SortedMap
 import model.SyukujitsuBody
 import service.implicits.LocalDateOrderImplicits.LocalDateOrderImplicits
+
+import scala.collection.immutable.ListMap
 
 /**
  *
@@ -228,6 +231,18 @@ class SykujitsuParserSpec extends FunSpec with Matchers {
         case Left(msg) => None
       }
       res should equal(resMap)
+    }
+
+    it("convert to Map by builtin"){
+      val resultParse = SyukujitsuParser.parse(testOK)
+      val res:Option[Map[Int, Map[LocalDate,String]]] = resultParse match {
+        case Right(result) => Some(SyukujitsuParser.convertSyukujitsuMap_builtin(result))
+        case Left(msg)     => None
+      }
+
+      // println(ListMap(res.get.toSeq.sortBy(_._1):_*))
+      println(res)
+      res.get should equal(resMap)
     }
 
   }
