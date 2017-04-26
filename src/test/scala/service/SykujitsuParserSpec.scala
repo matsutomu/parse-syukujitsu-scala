@@ -241,7 +241,7 @@ class SykujitsuParserSpec extends FunSpec with Matchers {
       }
 
       // println(ListMap(res.get.toSeq.sortBy(_._1):_*))
-      println(res)
+      // println(res)
       res.get should equal(resMap)
     }
 
