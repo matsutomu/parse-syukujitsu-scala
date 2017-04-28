@@ -107,27 +107,34 @@ object SyukujitsuParser extends RegexParsers {
   }
 
   def convertSyukujitsuMap_recursive(
-        lst: List[SyukujitsuBody],
-        mp: SortedMap[Int, SortedMap[LocalDate, String]] = SortedMap.empty[Int, SortedMap[LocalDate, String]]
+    lst: List[SyukujitsuBody],
+    mp: SortedMap[Int, SortedMap[LocalDate, String]] = SortedMap.empty[Int, SortedMap[LocalDate, String]]
   ): SortedMap[Int, SortedMap[LocalDate, String]] = lst match {
-        case Nil => mp
-        case head :: tail => {
-                if (mp isDefinedAt (head.date.getYear)) {
-                  convertSyukujitsuMap_recursive(tail,
-                          mp.updated(head.date.getYear,
-                                     mp.apply(head.date.getYear) + (head.date -> head.date_name)))
-                } else
-                  convertSyukujitsuMap_recursive(tail,
-                          mp + (head.date.getYear -> SortedMap(head.date -> head.date_name)))
-        }
+    case Nil => mp
+    case head :: tail => {
+      if (mp isDefinedAt (head.date.getYear)) {
+        convertSyukujitsuMap_recursive(
+          tail,
+          mp.updated(
+            head.date.getYear,
+            mp.apply(head.date.getYear) + (head.date -> head.date_name)
+          )
+        )
+      } else
+        convertSyukujitsuMap_recursive(
+          tail,
+          mp + (head.date.getYear -> SortedMap(head.date -> head.date_name))
+        )
+    }
   }
 
-
   def convertSyukujitsuMap_builtin(lst: List[SyukujitsuBody]) =
-    lst.groupBy(_.date.getYear).map { e =>
-        (e._1 -> e._2.foldLeft(Map[LocalDate, String]())((b, s) => (b ++ Map(s.date -> s.date_name))))
+    lst.groupBy(_.date.getYear).map {
+      case (year, shukujitsuBodyList) =>
+        year -> shukujitsuBodyList.map { s =>
+          s.date -> s.date_name
+        }.toMap
     }
-
 
   def convertYearMapList(
     lst: List[SyukujitsuBody],

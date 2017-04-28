@@ -233,11 +233,11 @@ class SykujitsuParserSpec extends FunSpec with Matchers {
       res should equal(resMap)
     }
 
-    it("convert to Map by builtin"){
+    it("convert to Map by builtin") {
       val resultParse = SyukujitsuParser.parse(testOK)
-      val res:Option[Map[Int, Map[LocalDate,String]]] = resultParse match {
+      val res: Option[Map[Int, Map[LocalDate, String]]] = resultParse match {
         case Right(result) => Some(SyukujitsuParser.convertSyukujitsuMap_builtin(result))
-        case Left(msg)     => None
+        case Left(msg) => None
       }
 
       // println(ListMap(res.get.toSeq.sortBy(_._1):_*))
