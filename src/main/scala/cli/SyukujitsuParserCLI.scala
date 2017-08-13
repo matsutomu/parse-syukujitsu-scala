@@ -1,14 +1,14 @@
 package cli
 
-import java.time.{ LocalDate, LocalDateTime }
+import java.time.{LocalDate, LocalDateTime}
 import java.time.format.DateTimeFormatter
 
 import service.SyukujitsuParser
 import model._
 
 /**
- * Created by matsutomu on 17/03/08.
- */
+  * Created by matsutomu on 17/03/08.
+  */
 object SyukujitsuParserCLI extends App {
 
   var syukujitsuCsvOk =

@@ -12,19 +12,22 @@ case class SyukujitsuBody(date_name: String, date: LocalDate)
 /*
  *  for JSON
  */
-case class JSONResponse(success: Boolean, msg: String, syukujitsu: Option[SortedMap[LocalDate, String]])
-object LocalDateKeyJSonSerializer extends CustomKeySerializer[LocalDate](format => (
-  {
-    case s: String => {
-      LocalDate.parse(s, DateTimeFormatter.ofPattern("yyyy/M/d"))
-    }
-  },
-  {
-    case x: LocalDate => {
-      val obj = java.time.format.DateTimeFormatter.ofPattern("yyyy/MM/dd")
-      obj.format(x)
-      x.toString
-    }
-  }
-))
-
+case class JSONResponse(success: Boolean,
+                        msg: String,
+                        syukujitsu: Option[SortedMap[LocalDate, String]])
+object LocalDateKeyJSonSerializer
+    extends CustomKeySerializer[LocalDate](
+      format =>
+        (
+          {
+            case s: String => {
+              LocalDate.parse(s, DateTimeFormatter.ofPattern("yyyy/M/d"))
+            }
+          }, {
+            case x: LocalDate => {
+              val obj = java.time.format.DateTimeFormatter.ofPattern("yyyy/MM/dd")
+              obj.format(x)
+              x.toString
+            }
+          }
+      ))

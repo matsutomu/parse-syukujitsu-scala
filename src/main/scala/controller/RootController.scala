@@ -45,7 +45,7 @@ class RootController extends ApplicationController with JSONFeature {
       case Right(result) => {
         SyukujitsuParser.convertSyukujitsuMap_recursive(result).get(y) match {
           case Some(v) => toJSONString(JSONResponse(true, "", Some(v)))
-          case None => toJSONString(JSONResponse(false, "no data", None))
+          case None    => toJSONString(JSONResponse(false, "no data", None))
         }
       }
       case Left(msg) => toJSONString(JSONResponse(false, msg, None))
@@ -54,4 +54,3 @@ class RootController extends ApplicationController with JSONFeature {
   }
 
 }
-
