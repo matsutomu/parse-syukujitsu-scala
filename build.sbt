@@ -6,7 +6,7 @@ import org.sbtidea.SbtIdeaPlugin._
 import scala.language.postfixOps
 
 // -------------------------------------------------------
-// Common Settings
+// Common Settings test
 // -------------------------------------------------------
 
 val appOrganization = "simple-teq"
